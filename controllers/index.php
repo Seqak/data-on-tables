@@ -17,13 +17,8 @@ $twig = new Twig_Environment($loader);
 
 echo $twig->render('index.html', array(
 
-    'factory' => array(
-
-        'firmaA' => $arr[0],
-        'firmaB' => $arr[1],
-        'firmaC' => $arr[2],
-        'firmaD' => $arr[3],
-    ),
+    'factory' => $arr,
+  
 ));
 
 
