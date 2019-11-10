@@ -1,44 +1,31 @@
 <?php
-
-
 session_start();
+
 require('../vendor/autoload.php');
-include('../config.php');
+require('../model/dbconnect.php');
+require('../model/Users.php');
+require('../model/ViewUser.php');
 
 
 
-$config = new DBConfig\DBConfig();
-
-$dbConf = $config->getConfig();
-$dbConfig = $dbConf->fetch_assoc();
-
-// $db = new mysqli('localhost', 'root', 'vertrigo', 'data_on_tables');
-$db = new mysqli($dbConfig);
-$dbQuery = $db->query("SELECT * FROM clients");
-$dbResult = $dbQuery->fetch_assoc();
-
-foreach ($dbResult as $value) {
-    printf($value);
-} 
-
-
-
-
-
-
-
-
-
-
+$users = new ViewUser();
+$arr = $users->showUsers();
 
 
 $loader = new Twig_Loader_Filesystem('../views');
 $twig = new Twig_Environment($loader);
 
 echo $twig->render('index.html', array(
-    'alert' => 'Błąd walidacji danych',
-    'age' => 3,
-    
+
+    'factory' => array(
+
+        'firmaA' => $arr[0],
+        'firmaB' => $arr[1],
+        'firmaC' => $arr[2],
+        'firmaD' => $arr[3],
+    ),
 ));
+
+
 
 ?>

@@ -168,67 +168,36 @@
                             <table id="zero_config" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Nazwa</th>
+                                        <th>Pakiet</th>
+                                        <th>Start</th>
+                                        <th>Koniec</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    
+                                   
+                                    <!-- <tr>
                                         <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dai Rios</td>
-                                        <td>Personnel Lead</td>
-                                        <td>Edinburgh</td>
-                                        <td>35</td>
-                                        <td>2012/09/26</td>
-                                        <td>$217,500</td>
-                                    </tr>
-                                
-                                    <tr>
-                                        <td>Fiona Green</td>
-                                        <td>Chief Operating Officer (COO)</td>
-                                        <td>San Francisco</td>
-                                        <td>48</td>
-                                        <td>2010/03/11</td>
-                                        <td>$850,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Shou Itou</td>
-                                        <td>Regional Marketing</td>
-                                        <td>Tokyo</td>
-                                        <td>20</td>
-                                        <td>2011/08/14</td>
-                                        <td>$163,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michelle House</td>
-                                        <td>Integration Specialist</td>
-                                        <td>Sidney</td>
-                                        <td>37</td>
-                                        <td>2011/06/02</td>
-                                        <td>$95,400</td>
-                                    </tr>
-                                
+                                        <td>Start</td>
+                                        <td>21.10.2012</td>
+                                        <td>21.10.2015</td>
+                                    </tr> -->
+
+                                    {% for item in factory %}
+                                        <tr>
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.package}}</td>
+                                            <td>{{item.start}}</td>
+                                            <td>{{item.end}}</td> 
+                                        </tr>
+                                    {% endfor %}
+                            
                                 </tbody>
                             </table>
+
+                            
                         </div>  
                     </div>        
                 </div>
