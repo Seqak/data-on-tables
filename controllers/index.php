@@ -8,6 +8,63 @@ require('../model/ViewUser.php');
 
 
 
+
+
+if (isset($_POST['val'])) {
+    echo "sieeeemmmaa";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $users = new ViewUser();
 $arr = $users->showUsers();
 

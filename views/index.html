@@ -172,6 +172,7 @@
                                         <th>Pakiet</th>
                                         <th>Start</th>
                                         <th>Koniec</th>
+                                        <th></th>
                                         
                                     </tr>
                                 </thead>
@@ -182,7 +183,12 @@
                                             <td>{{item.name}}</td>
                                             <td>{{item.package}}</td>
                                             <td>{{item.start}}</td>
-                                            <td>{{item.end}}</td> 
+                                            <td>{{item.end}}</td>
+                                            <td>
+                                                <form action="index.php" method="POST">
+                                                    <button id="delete-button" class="btn btn-danger btn-sm" name="delete-btn"><i class="fas fa-trash-alt" data-id="{{item.id}}"></i></button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     {% endfor %}
                             
@@ -254,6 +260,7 @@
          *       Basic Table                   *
          ****************************************/
         $('#zero_config').DataTable();
+    
     </script>
 </body>
 
