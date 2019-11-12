@@ -6,19 +6,22 @@ require('../model/dbconnect.php');
 require('../model/Users.php');
 require('../model/ViewUser.php');
 
+// echo $_POST['data'];
 
 
 
+if (isset($_POST['dilit'])) {
+    # code...
 
-if (isset($_POST['val'])) {
-    echo "sieeeemmmaa";
+    if (isset($_POST['lola'])) {
+        $hope = $_POST['lola'];
+        // echo $hope;
+
+        $db = new mysqli('localhost', 'root', 'vertrigo', "data_on_tables");
+        $db->query("DELETE FROM clients WHERE id='$hope'");
+        // echo "Usunięto Typa!";
+    }
 }
-
-
-
-
-
-
 
 
 
@@ -75,6 +78,7 @@ $twig = new Twig_Environment($loader);
 echo $twig->render('index.html', array(
 
     'factory' => $arr,
+    // 'elo' => $varr,
   
 ));
 

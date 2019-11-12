@@ -18,8 +18,4 @@ class DBconnect{
         
         return $conn;
     }
-
-    public function getInfo(){
-        return "Działa";
-    }
 }
