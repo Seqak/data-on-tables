@@ -2,11 +2,9 @@
 
 class Deleteuser extends DBconnect{
 
-    public function deleteTypa($id){
+    public function deleteClient($id){
 
         $sql = ("DELETE FROM clients WHERE id='$id' ");
         $result = $this->connect()->query($sql);
-        echo "Usunięto Typa!";
-
     }
 }

@@ -6,79 +6,49 @@ require('../model/dbconnect.php');
 require('../model/Users.php');
 require('../model/ViewUser.php');
 
-// echo $_POST['data'];
 
+// if(isset($_GET['toast'])){
+//     $toastStatus = $_GET['toast'];
+//     if ($_GET['toaststatus'] == 'success') {
+//         $deleteToast = 'success';
+//         header("Refresh: 1; url=index.php");
+//     }
+//     else{
+//         $deleteToast = 'failed';
+//     }
+// }
 
+$toastActive = false;
+if (isset($_SESSION['toast'])) {
 
-if (isset($_POST['dilit'])) {
-    # code...
-
-    if (isset($_POST['lola'])) {
-        $hope = $_POST['lola'];
-        // echo $hope;
-
-        $db = new mysqli('localhost', 'root', 'vertrigo', "data_on_tables");
-        $db->query("DELETE FROM clients WHERE id='$hope'");
-        // echo "Usunięto Typa!";
+    $toastActive = true;
+    if (isset($_SESSION['toastStatus'])) {
+        if ($_SESSION['toastStatus'] == 'success') {
+            
+            $deleteToast = 'success';
+            unset($_SESSION['toast']);
+        }
+        else{
+            $deleteToast = 'failed'; 
+            unset($_SESSION['toast']);   
+        }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 $users = new ViewUser();
 $arr = $users->showUsers();
 
+var_dump($toastActive);
 
 $loader = new Twig_Loader_Filesystem('../views');
 $twig = new Twig_Environment($loader);
 
 echo $twig->render('index.html', array(
 
-    'factory' => $arr,
-    // 'elo' => $varr,
+    'clientList' => $arr,
+    'toastActive' => @$toastActive,
+    'deleteToast' => @$deleteToast,
   
 ));
 
