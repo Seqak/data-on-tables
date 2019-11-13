@@ -1,20 +1,12 @@
 <?php
 
-echo "Got ya";
+class Deleteuser extends DBconnect{
 
-// class Deleteuser extends DBconnect{
+    public function deleteTypa($id){
 
-//     public function deleteUser($id){
+        $sql = ("DELETE FROM clients WHERE id='$id' ");
+        $result = $this->connect()->query($sql);
+        echo "Usunięto Typa!";
 
-//         $sql = ("DELETE FROM clients WHERE id='$id' ");
-//         echo "Usunięto Typa!";
-
-//     }
-// }
-
-// $del = new Deleteuser();
-// $del->deleteUser($_POST['data']);
-
-// echo "Got ya";
-
-// header('Location: ../index.php');
+    }
+}
