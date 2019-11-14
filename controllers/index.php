@@ -39,8 +39,6 @@ if (isset($_SESSION['toast'])) {
 $users = new ViewUser();
 $arr = $users->showUsers();
 
-var_dump($toastActive);
-
 $loader = new Twig_Loader_Filesystem('../views');
 $twig = new Twig_Environment($loader);
 
@@ -52,6 +50,15 @@ echo $twig->render('index.html', array(
   
 ));
 
+
+/*  TO DO
+*   -------------------------------------------            
+*   Form for Add the new clients 
+*   -------------------------------------------          
+*   Serve pop up's when the client is deleting       
+*   ------------------------------------------- 
+*
+*/
 
 
 ?>

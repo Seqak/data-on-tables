@@ -1,7 +1,6 @@
 <?php
 session_start();
 require('../model/dbconnect.php');
-require('../model/Users.php');
 require_once('../model/deleteuser.php');
 
 if (isset($_POST['deleteBtn'])) {
