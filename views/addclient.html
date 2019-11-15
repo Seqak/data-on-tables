@@ -14,10 +14,13 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="../assets/extra-libs/multicheck/multicheck.css">
     <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-    <link href="../dist/css/style.min.css" rel="stylesheet">
     <link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
     <link href="../assets/libs/sweetalert/build/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../assets/libs/select2/dist/css/select2.min.css">
 
+    <link rel="stylesheet" type="text/css" href="../assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+    <link href="../dist/css/style.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -168,53 +171,76 @@
                 <!-- ============================================================== -->
                 
                     
-                       
+                <h3 class="page-title m-t-20">Klienci</h3>
                        
 <!--                       MAIN-->
 <!--                       MAIN-->                     
 <!--                       MAIN-->
 <!--                       MAIN-->                                          
 <!--                       MAIN--> 
-                <div class="row">
+
+                <div class="row m-t-40">
+                    
+                    
                     <div class="col-md-6">
                         <div class="card">
-                            <form class="form-horizontal">
+
+                            <form class="form-horizontal" action="addclient.php" method="POST">
                                 <div class="card-body">
                                     <h4 class="card-title m-b-40">Dodaj nowego klienta</h4>
+
                                     <div class="form-group row">
                                         <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nazwa</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" placeholder="Nazwa klienta" name="clientName">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="lname" class="col-sm-3 text-right control-label col-form-label">Pakiet</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control">
+                                            <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="clientPackage">
+
+                                                <option value="start">Start</option>
+                                                <option value="standard">Standard</option>
+                                                <option value="extensive">Extensive</option>
+                                                <option value="nolimit">No Limits</option>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="lname" class="col-sm-3 text-right control-label col-form-label">Start</label>
                                         <div class="col-sm-9">
-                                            <input type="password" class="form-control" >
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="clientStart">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Koniec</label>
-                                            <div class="col-sm-9">
-                                                <input type="password" class="form-control" >
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Koniec</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="datepicker-autoclose-end" placeholder="dd/mm/yyyy" name="clientEnd">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
                                    
                                 </div>
+
                                 <div class="border-top">
                                     <div class="card-body">
-                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary" name="clientAddButton">Zapisz</button>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -279,11 +305,20 @@
 
     <script src="../assets/libs/toastr/build/toastr.min.js"></script>
     <script src="../assets/libs/sweetalert/sweetalert.min.js"></script>
+
+    <script src="../assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="../assets/libs/select2/dist/js/select2.min.js"></script>
+
+    <script src="../assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="../dist/js/pages/mask/mask.init.js"></script>
+    <script src="../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     
     <script>
         /****************************************
          *       Basic Table                   *
          ****************************************/
+         $(".select2").select2();
+
         $('#zero_config').DataTable();
 
         // $('#prbutton').click(function () {
@@ -298,8 +333,32 @@
         //         closeOnConfirm: false
         //     });
         // });
+        $(function(a){a.fn.datepicker.dates.pl={days:["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"],daysShort:["Niedz.","Pon.","Wt.","Śr.","Czw.","Piąt.","Sob."],daysMin:["Ndz.","Pn.","Wt.","Śr.","Czw.","Pt.","Sob."],months:["Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień"],monthsShort:["Sty.","Lut.","Mar.","Kwi.","Maj","Cze.","Lip.","Sie.","Wrz.","Paź.","Lis.","Gru."],today:"Dzisiaj",weekStart:1,clear:"Wyczyść",format:"dd.mm.yyyy"}}(jQuery));
+       
+        $('#datepicker-autoclose').datepicker({
+            language: 'pl'
+        });
+        /*datwpicker*/
+        jQuery('.mydatepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            format: 'dd.mm.yyyy',
+        });
 
-   
+
+        $('#datepicker-autoclose-end').datepicker({
+            language: 'pl'
+        });
+        jQuery('#datepicker-autoclose-end').datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            format: 'dd.mm.yyyy',
+            
+        });
+        
+       
+
 
     </script>
 
