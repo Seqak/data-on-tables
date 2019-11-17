@@ -189,49 +189,122 @@
                                 <div class="card-body">
                                     <h4 class="card-title m-b-40">Dodaj nowego klienta</h4>
 
-                                    <div class="form-group row">
-                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nazwa</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="Nazwa klienta" name="clientName">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Pakiet</label>
-                                        <div class="col-sm-9">
-                                            <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="clientPackage">
-
-                                                <option value="start">Start</option>
-                                                <option value="standard">Standard</option>
-                                                <option value="extensive">Extensive</option>
-                                                <option value="nolimit">No Limits</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Start</label>
-                                        <div class="col-sm-9">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="clientStart">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    <!-- Validate Name field -->
+                                    {% if name_error == true %}
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-3 text-right control-label col-form-label text-danger">Nazwa</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control is-invalid" placeholder="Nazwa klienta" name="clientName">
+                                                <div class="invalid-feedback">
+                                                    Pole Nazwa musi zostać wypełnione.
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    {% else %}
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nazwa</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" placeholder="Nazwa klienta" name="clientName">
+                                            </div>
+                                        </div>
+                                    {% endif %}
 
-                                    <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Koniec</label>
-                                        <div class="col-sm-9">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="datepicker-autoclose-end" placeholder="dd/mm/yyyy" name="clientEnd">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    <!-- Validate Package field -->
+                                    {% if package_erro == true %}
+                                        <div class="form-group row">
+                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label text-danger">Pakiet</label>
+                                            <div class="col-sm-9">
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="clientPackage">
+
+                                                    <option value="start">Start</option>
+                                                    <option value="standard">Standard</option>
+                                                    <option value="extensive">Extensive</option>
+                                                    <option value="nolimit">No Limits</option>
+                                                </select>
+                                                <small class="text-danger">
+                                                    Wybierz poprawny pakiet.
+                                                </small>
+                                            </div>
+                                        </div>
+                                            
+                                    {% else %}
+                                        
+                                        <div class="form-group row">
+                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Pakiet</label>
+                                            <div class="col-sm-9">
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="clientPackage">
+
+                                                    <option value="start">Start</option>
+                                                    <option value="standard">Standard</option>
+                                                    <option value="extensive">Extensive</option>
+                                                    <option value="nolimit">No Limits</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                         
+                                    {% endif %}
+                                    
+
+                                    <!-- Validate Start date field -->
+                                    {% if start_erro == true %}
+
+                                        <div class="form-group row">
+                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label text-danger">Start</label>
+                                            <div class="col-sm-9">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="clientStart">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                                <small class="text-danger">Wybierz poprawną datę</small>
+                                            </div>  
+                                        </div>
+
+                                    {% else %}
+
+                                        <div class="form-group row">
+                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Start</label>
+                                            <div class="col-sm-9">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="clientStart">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+
+                                    {% endif %}
+
+                                    <!-- Validate End date field -->
+                                    {% if end_erro == true %}
+                                        <div class="form-group row">
+                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label text-danger">Koniec</label>
+                                            <div class="col-sm-9">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="datepicker-autoclose-end" placeholder="dd/mm/yyyy" name="clientEnd">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                                <small class="text-danger">Wybierz poprawną datę</small>
+                                            </div>
+                                        </div>
+                                    {% else %}
+
+                                        <div class="form-group row">
+                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Koniec</label>
+                                            <div class="col-sm-9">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="datepicker-autoclose-end" placeholder="dd/mm/yyyy" name="clientEnd">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                    
                                 </div>
 
@@ -241,6 +314,7 @@
                                     </div>
                                 </div>
 
+                               
                             </form>
                         </div>
                     </div>
@@ -321,18 +395,6 @@
 
         $('#zero_config').DataTable();
 
-        // $('#prbutton').click(function () {
-        //     swal({
-        //         title: "Usunąć tego klienta?",
-		// 		text: "Klient oraz wszystkie dane z nim związane zostaną trwale usunięte.",
-        //         type: "warning",
-        //         showCancelButton: true,
-		// 		cancelButtonText: "Anuluj",
-        //         confirmButtonColor: "#DD6B55",
-        //         confirmButtonText: "Usuń",
-        //         closeOnConfirm: false
-        //     });
-        // });
         $(function(a){a.fn.datepicker.dates.pl={days:["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"],daysShort:["Niedz.","Pon.","Wt.","Śr.","Czw.","Piąt.","Sob."],daysMin:["Ndz.","Pn.","Wt.","Śr.","Czw.","Pt.","Sob."],months:["Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień"],monthsShort:["Sty.","Lut.","Mar.","Kwi.","Maj","Cze.","Lip.","Sie.","Wrz.","Paź.","Lis.","Gru."],today:"Dzisiaj",weekStart:1,clear:"Wyczyść",format:"dd.mm.yyyy"}}(jQuery));
        
         $('#datepicker-autoclose').datepicker({
