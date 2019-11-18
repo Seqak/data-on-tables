@@ -13,7 +13,7 @@ class FieldValidator{
     }
 
     public function checkPackage($arg){
-        if ($arg == 'start' || $arg == 'standard' || $arg == 'extensive' || $arg == 'nolimit') {
+        if ($arg == 'Start' || $arg == 'Standard' || $arg == 'Extensive' || $arg == 'No Limit') {
             return false;
         }else{
             return true;

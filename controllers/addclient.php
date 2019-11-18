@@ -12,7 +12,7 @@ if (isset($_POST['clientAddButton'])) {
     foreach ($_POST as $key) {
         htmlspecialchars($key);
     }
-
+    
     $validator = new FieldValidator();
     $nameErro = $validator->checkName($_POST['clientName']);
     $packageErro = $validator->checkPackage($_POST['clientPackage']);
@@ -29,10 +29,11 @@ if (isset($_POST['clientAddButton'])) {
     else{
         $validationResult = false;
     }
+
 }
 
 if (isset($validationResult)) {
- 
+
     if ($validationResult == true) {
     
         $addClient = new AddNewUser();

@@ -6,18 +6,6 @@ require('../model/dbconnect.php');
 require('../model/Users.php');
 require('../model/ViewUser.php');
 
-
-// if(isset($_GET['toast'])){
-//     $toastStatus = $_GET['toast'];
-//     if ($_GET['toaststatus'] == 'success') {
-//         $deleteToast = 'success';
-//         header("Refresh: 1; url=index.php");
-//     }
-//     else{
-//         $deleteToast = 'failed';
-//     }
-// }
-
 $toastAddedActive = false;
 if (isset($_SESSION['toastAdded'])) {
 

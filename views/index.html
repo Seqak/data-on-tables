@@ -207,12 +207,12 @@
                                                 <input name="clientId" type="hidden" value="{{client.id}}">
                                                 <td>{{client.name}}</td>
                                                 <td>{{client.package}}</td>
-                                                <td>{{client.start}}</td>
-                                                <td>{{client.end}}</td>
+                                                <td>{{client.start|date("d.m.Y")}}</td>
+                                                <td>{{client.end|date("d.m.Y")}}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-sm" name="editBtn" type="submit" data-toggle="tooltip" title="Edytuj"><i class="fas fa-pencil-alt"></i></button>
+                                                    <button type="button" class="btn btn-info btn-sm lala" name="editBtn" type="submit" data-toggle="tooltip" title="Edytuj"><i class="fas fa-pencil-alt"></i></button>
 
-                                                    <button class="btn btn-danger btn-sm" name="deleteBtn" type="submit" data-toggle="tooltip" title="Usuń"><i class="fas fa-trash-alt"></i></button>
+                                                    <button  class="btn btn-danger btn-sm" name="deleteBtn" type="submit" data-toggle="tooltip" title="Usuń"><i class="fas fa-trash-alt"></i></button>
                                                 </td>
 
                                             </form>
@@ -293,18 +293,19 @@
          ****************************************/
         $('#zero_config').DataTable();
 
-        // $('#lala').click(function () {
-        //     swal({
-        //         title: "Usunąć tego klienta?",
-		// 		text: "Klient oraz wszystkie dane z nim związane zostaną trwale usunięte.",
-        //         type: "warning",
-        //         showCancelButton: true,
-		// 		cancelButtonText: "Anuluj",
-        //         confirmButtonColor: "#DD6B55",
-        //         confirmButtonText: "Usuń",
-        //         closeOnConfirm: false
-        //     });
-        // });
+        $('.lala').click(function () {
+            e.preventDefault();
+            swal({
+                title: "Usunąć tego klienta?",
+				text: "Klient oraz wszystkie dane z nim związane zostaną trwale usunięte.",
+                type: "warning",
+                showCancelButton: true,
+				cancelButtonText: "Anuluj",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Usuń",
+                closeOnConfirm: false
+            });
+        });
 
    
 
