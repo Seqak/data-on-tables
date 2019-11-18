@@ -14,6 +14,27 @@ class NameAvailability extends DBconnect{
             return false;
         }
     }
+
+    public function checkNewName($defaultName, $newName){
+        
+        if ($newName == $defaultName) {
+           
+            return false;
+        }
+        else{
+            
+            $sql = ("SELECT * FROM clients WHERE name='$newName'");
+            $exec = $this->connect()->query($sql);
+            $result = $exec->num_rows;
+
+            if ($result > 0) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
 }
 
 ?>

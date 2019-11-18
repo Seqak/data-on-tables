@@ -23,6 +23,23 @@ if (isset($_SESSION['toastAdded'])) {
     }
 }
 
+$toastEditActive = false;
+if (isset($_SESSION['toastEdit'])) {
+
+    $toastEditActive = true;
+    if (isset($_SESSION['toastEditStatus'])) {
+        if ($_SESSION['toastEditStatus'] == 'success') {
+            
+            $editToast = 'success';
+            unset($_SESSION['toastEdit']);
+        }
+        else{
+            $editToast = 'failed'; 
+            unset($_SESSION['toastEdit']);   
+        }
+    }
+}
+
 
 $toastDeleteActive = false;
 if (isset($_SESSION['toastDelete'])) {
@@ -53,6 +70,8 @@ echo $twig->render('index.html', array(
     'clientList' => $arr,
     'toastAddedActive' => @$toastAddedActive,
     'addedToast' => @$addedToast,
+    'toastEditActive' => @$toastEditActive,
+    'editToast' => @$editToast,
     'toastDeleteActive' => @$toastDeleteActive,
     'deleteToast' => @$deleteToast,
   
