@@ -13,8 +13,8 @@ if (isset($_POST['deleteBtn'])) {
         $db->deleteClient($clientId);
 
         // header("Location: index.php?toast=yes&toaststatus=success");
-        $_SESSION['toast'] = "yes";
-        $_SESSION['toastStatus'] = "success";
+        $_SESSION['toastDelete'] = "yes";
+        $_SESSION['toastDeleteStatus'] = "success";
         header("Location: index.php");
         exit();
     }

@@ -210,6 +210,8 @@
                                                 <td>{{client.start}}</td>
                                                 <td>{{client.end}}</td>
                                                 <td>
+                                                    <button type="button" class="btn btn-info btn-sm" name="editBtn" type="submit" data-toggle="tooltip" title="Edytuj"><i class="fas fa-pencil-alt"></i></button>
+
                                                     <button class="btn btn-danger btn-sm" name="deleteBtn" type="submit" data-toggle="tooltip" title="Usuń"><i class="fas fa-trash-alt"></i></button>
                                                 </td>
 
@@ -308,7 +310,19 @@
 
     </script>
 
-    {% if toastActive == true %}
+    {% if toastAddedActive == true %}
+        {% if addedToast == 'success' %}
+            <script>
+                toastr.success('Klient został pomyślnie dodany do bazy danych.', { timeOut: 1500, showDuration: 700,});
+            </script>
+        {% elseif addedToast == 'failed' %}
+            <script>
+                toastr.error('Nie udało się dodać klienta do bazy danych. Coś poszło nie tak.', { timeOut: 2500, showDuration: 700,});      
+            </script>
+        {% endif %}
+    {% endif %}
+
+    {% if toastDeleteActive == true %}
         {% if deleteToast == 'success' %}
             <script>
                 toastr.success('Klient został pomyślnie usunięty z bazy danych.', { timeOut: 1500, showDuration: 700,});

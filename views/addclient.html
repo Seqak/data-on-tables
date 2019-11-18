@@ -200,6 +200,18 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    {% elseif name_ava_erro == true %}
+                                        <div class="form-group row">
+                                            <label for="fname" class="col-sm-3 text-right control-label col-form-label text-danger">Nazwa</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control is-invalid" placeholder="Nazwa klienta" name="clientName">
+                                                <div class="invalid-feedback">
+                                                    Klient o podanej nazwie już istnieje.
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
                                     {% else %}
                                         <div class="form-group row">
                                             <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nazwa</label>
@@ -424,7 +436,7 @@
 
     </script>
 
-    {% if toastActive == true %}
+    {% if toastDeleteActive == true %}
         {% if deleteToast == 'success' %}
             <script>
                 toastr.success('Klient został pomyślnie usunięty z bazy danych.', { timeOut: 1500, showDuration: 700,});
