@@ -16,8 +16,8 @@
     <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="../dist/css/style.min.css" rel="stylesheet">
     <link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
-    <link href="../assets/libs/sweetalert/build/sweetalert.css" rel="stylesheet">
 
+    <link href="../assets/libs/sweetalert/build/sweetalert.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -124,7 +124,7 @@
                                         <tr>
                                             <form action="tables.php" method="POST">
                                                 
-                                                <input name="clientId" type="hidden" value="{{client.id}}">
+                                                <input class="clientId" name="clientId" type="hidden" value="{{client.id}}">
                                                 <td>{{client.name}}</td>
                                                 <td>{{client.package}}</td>
                                                 <td>{{client.start|date("d.m.Y")}}</td>
@@ -142,6 +142,7 @@
                                     
                                 </tbody>
                             </table>  
+                            
                         </div>  
                     </div>        
                 </div>
@@ -214,21 +215,19 @@
          ****************************************/
         $('#zero_config').DataTable();
 
-        $('.lala').click(function () {
-            e.preventDefault();
-            swal({
-                title: "Usunąć tego klienta?",
-				text: "Klient oraz wszystkie dane z nim związane zostaną trwale usunięte.",
-                type: "warning",
-                showCancelButton: true,
-				cancelButtonText: "Anuluj",
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Usuń",
-                closeOnConfirm: false
-            });
-        });
+        // $('.lala').click(function () {
+        //     swal({
+        //         title: "Usunąć tego klienta?",
+		// 		text: "Klient oraz wszystkie dane z nim związane zostaną trwale usunięte.",
+        //         type: "warning",
+        //         showCancelButton: true,
+		// 		cancelButtonText: "Anuluj",
+        //         confirmButtonColor: "#DD6B55",
+        //         confirmButtonText: "Usuń",
+        //         closeOnConfirm: false
+        //     });
+        // });
 
-   
 
     </script>
 

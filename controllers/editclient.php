@@ -12,13 +12,22 @@ require('../model/updateclient.php');
 if (isset($_GET['id'])) {
     $clientID = $_GET['id'];
     unset($_GET);
+
+    $clientObejct = new GetUser();
+    $rows = $clientObejct->checkUser($clientID);
+    
+    if ($rows <= 0) {
+        header('Location: index.php');
+        exit();
+    } 
 }
 else{
     header('Location: index.php');
     exit();
 }
 
-$clientObejct = new GetUser();
+
+// $clientObejct = new GetUser();
 $clientInfo = $clientObejct->getOneUser($clientID);
 
 if (isset($_POST['clientEditButton'])) {
@@ -60,7 +69,7 @@ $twig = new Twig_Environment($loader);
 
 echo $twig->render('editclient.html', array(
 
-    'clientValue' => $clientInfo,
+    'clientValue' => @$clientInfo,
     'name_error' => @$nameErro,
     'package_erro' => @$packageErro,
     'start_erro' => @$startErro,
