@@ -17,8 +17,7 @@ class NameAvailability extends DBconnect{
 
     public function checkNewName($defaultName, $newName){
         
-        if ($newName == $defaultName) {
-           
+        if ($newName == $defaultName) { 
             return false;
         }
         else{

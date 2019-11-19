@@ -29,7 +29,6 @@ if (isset($_POST['clientAddButton'])) {
     else{
         $validationResult = false;
     }
-
 }
 
 if (isset($validationResult)) {
@@ -47,7 +46,6 @@ $twig = new Twig_Environment($loader);
 
 echo $twig->render('addclient.html', array(
 
-    'fieldsEmpty' => "some",
     'name_error' => @$nameErro,
     'package_erro' => @$packageErro,
     'start_erro' => @$startErro,

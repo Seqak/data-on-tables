@@ -12,7 +12,6 @@ if (isset($_POST['deleteBtn'])) {
         $db = new Deleteuser();
         $db->deleteClient($clientId);
 
-        // header("Location: index.php?toast=yes&toaststatus=success");
         $_SESSION['toastDelete'] = "yes";
         $_SESSION['toastDeleteStatus'] = "success";
         header("Location: index.php");

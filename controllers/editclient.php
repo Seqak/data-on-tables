@@ -26,8 +26,6 @@ else{
     exit();
 }
 
-
-// $clientObejct = new GetUser();
 $clientInfo = $clientObejct->getOneUser($clientID);
 
 if (isset($_POST['clientEditButton'])) {
@@ -58,10 +56,6 @@ if (isset($validationResult)) {
         $updateClient->updateUser($clientID, $_POST['clientName'], $_POST['clientPackage'], $_POST['clientStart'], $_POST['clientEnd']);
     }
 }
-
-
-
-
 
 
 $loader = new Twig_Loader_Filesystem('../views');

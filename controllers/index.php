@@ -77,17 +77,4 @@ echo $twig->render('index.html', array(
   
 ));
 
-
-/*  TO DO
-*   -------------------------------------------            
-*   Form for Add the new clients - DONE
-*   -------------------------------------------          
-*   Serve pop up's when the client is deleting       
-*   ------------------------------------------- 
-*   The Client edition system.
-*   -------------------------------------------
-*
-*/
-
-
 ?>
