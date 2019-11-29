@@ -17,7 +17,12 @@
     <link href="../dist/css/style.min.css" rel="stylesheet">
     <link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 
-    <link href="../assets/libs/sweetalert/build/sweetalert.css" rel="stylesheet">
+    <!-- <link href="../assets/libs/sweetalert/build/sweetalert.css" rel="stylesheet"> -->
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -94,8 +99,8 @@
                                                 <td>
                                                     
                                                     <a href="editclient.php?id={{client.id}}" class="btn btn-info btn-sm lala" name="editBtn" data-toggle="tooltip" title="Edytuj"><i class="fas fa-pencil-alt"></i></a>
-                                                
-                                                    <button  class="btn btn-danger btn-sm" name="deleteBtn" type="submit" data-toggle="tooltip" title="Usuń"><i class="fas fa-trash-alt"></i></button>
+
+                                                    <button type="button" class="cid btn btn-danger btn-sm checked" onClick='removeRow("{{ client.id }}")'><i class="fas fa-trash-alt"></i></button>
                                                 </td>
 
                                             </form>
@@ -118,7 +123,7 @@
         </div>
        
     
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="../assets/libs/jquery/dist/jquery.min.js"></script> -->
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -137,7 +142,7 @@
     <script src="../assets/extra-libs/DataTables/datatables.min.js"></script>
 
     <script src="../assets/libs/toastr/build/toastr.min.js"></script>
-    <script src="../assets/libs/sweetalert/sweetalert.min.js"></script>
+    <!-- <script src="../assets/libs/sweetalert/sweetalert.min.js"></script> -->
     
     <script>
         /****************************************
@@ -145,6 +150,28 @@
          ****************************************/
         $('#zero_config').DataTable();
 
+        function removeRow(id){
+            console.log(id);
+                swal({
+                    title: "Usunąć tego klienta?",
+                    text: "Usunięty klient zostanie całkowicie usunięty z bazy danych.",
+                    icon: "warning",
+                    buttons: ["Anuluj", "Usuń"],
+                    dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.post("tables.php", {
+                                id: id
+                            }, function(){
+                                location.reload();
+                            });
+                        } else {
+                            
+                        }
+                    });
+            };
+       
     </script>
 
     {% if toastAddedActive == true %}

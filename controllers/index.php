@@ -62,6 +62,7 @@ if (isset($_SESSION['toastDelete'])) {
 $users = new ViewUser();
 $arr = $users->showUsers();
 
+
 $loader = new Twig_Loader_Filesystem('../views');
 $twig = new Twig_Environment($loader);
 
